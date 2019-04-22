@@ -13,6 +13,7 @@ export const createInfo = (API) => dispatch => {
     return axios
       .post(`${URL}/api/${API}/${user_id}`)
       .then(res => {
+        localStorage.setItem("data", JSON.stringify(res.data))
         dispatch({ type: CREATE_SUCCESS, payload: res.data });
       })
       .catch(err => {

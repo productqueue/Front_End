@@ -16,7 +16,7 @@ class Register extends Component {
     }
   }
 
-  handleChanges = e => {
+  handleChange = e => {
     this.setState({
       credentials: {
         ...this.state.credentials,
@@ -43,7 +43,7 @@ class Register extends Component {
           <FormGroup>
             <h2>Registration Page</h2>
             <Link to="/login">Login here.</Link> 
-            <Form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit}>
               <label htmlFor="first_name">First Name *</label>
               <input
                 id="first_name"
@@ -51,7 +51,7 @@ class Register extends Component {
                 name="first_name"
                 placeholder="First Name"
                 value={this.state.credentials.first_name}
-                onChange={this.handleChanges}
+                onChange={this.handleChange}
               />
               <>
                 <label htmlFor="last_name">Last Name *</label>
@@ -61,7 +61,7 @@ class Register extends Component {
                   name="last_name"
                   placeholder="Last Name"
                   value={this.state.credentials.last_name}
-                  onChange={this.handleChanges}
+                  onChange={this.handleChange}
                 />
               </>
               <>
@@ -72,7 +72,7 @@ class Register extends Component {
                   name="company"
                   placeholder="Company Name"
                   value={this.state.credentials.company}
-                  onChange={this.handleChanges}
+                  onChange={this.handleChange}
                 />
               </>
               <>
@@ -83,7 +83,7 @@ class Register extends Component {
                   name="email"
                   placeholder="Email Address"
                   value={this.state.credentials.email}
-                  onChange={this.handleChanges}
+                  onChange={this.handleChange}
                 />
               </>
               <>
@@ -94,7 +94,7 @@ class Register extends Component {
                   name="password"
                   placeholder="Password"
                   value={this.state.credentials.password}
-                  onChange={this.handleChanges}
+                  onChange={this.handleChange}
                 />
               </>
               <Button>
@@ -105,12 +105,10 @@ class Register extends Component {
                   "New User"
                 )}
               </Button>
-            </Form>
+            </form>
           </FormGroup>
-          
       )
   }
-
 }
 
 export default connect(

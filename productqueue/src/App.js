@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import PrivateRoute from './components/auth/PrivateRoute';
 import { connect } from "react-redux";
 
 //Styles
@@ -20,6 +21,7 @@ const Home = props => {
   return(
     <div>
       <h1>Welcome to Product Queue</h1>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam voluptatibus maxime labore nostrum nulla in magnam excepturi quasi sapiente veritatis repudiandae amet ullam distinctio, quaerat rerum dignissimos tenetur nesciunt molestiae?</p>
     </div>
   )
   
@@ -40,7 +42,7 @@ class App extends Component {
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/" component={Home} />
-            <Route exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/new-user" component={Welcome} />
             <Route exact path="/new-user/setup" component={Setup} />
           </>

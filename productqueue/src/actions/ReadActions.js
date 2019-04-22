@@ -12,6 +12,7 @@ export const readInfo = (API) => dispatch => {
     return axios
       .get(`${URL}/api/${API}/${user_id}`)
       .then(res => {
+        localStorage.setItem("data", JSON.stringify(res.data))
         dispatch({ type: READ_SUCCESS, payload: res.data });
       })
       .catch(err => {

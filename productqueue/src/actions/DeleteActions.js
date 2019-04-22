@@ -11,6 +11,7 @@ export const deleteInfo = (API) => dispatch => {
     return axios
       .delete(`${URL}/api/${API}/${user_id}`)
       .then(res => {
+        localStorage.setItem("data", JSON.stringify(res.data))
         dispatch({ type: DELETE_SUCCESS, payload: res.data });
       })
       .catch(err => {

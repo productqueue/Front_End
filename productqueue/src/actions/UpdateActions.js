@@ -11,6 +11,7 @@ export const updateInfo = (API) => dispatch => {
     return axios
       .put(`${URL}/api/${API}/${user_id}`)
       .then(res => {
+        localStorage.setItem("data", JSON.stringify(res.data))
         dispatch({ type: UPDATE_SUCCESS, payload: res.data });
       })
       .catch(err => {

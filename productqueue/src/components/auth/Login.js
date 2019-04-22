@@ -38,24 +38,24 @@ class Login extends Component {
           <FormGroup>
             <h2>Login Page</h2>
             <Link to="/register">Register here.</Link> 
-            <Form onSubmit={this.loginAttempt}>
+            <form onSubmit={this.loginAttempt}>
               <label htmlFor="email">Email</label>
                 <input
-                    id="email"
-                    type="text"
-                    name="email"
-                    placeholder="Email Address"
-                    value={this.state.credentials.email}
-                    onChange={this.handleChanges}
+                  id="email"
+                  type="text"
+                  name="email"
+                  placeholder="Email Address"
+                  value={this.state.credentials.email}
+                  onChange={this.handleChange}
                 />
                 <label htmlFor="password">Password *</label>
                 <input
-                    id="password"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={this.state.credentials.password}
-                    onChange={this.handleChanges}
+                  id="password"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.credentials.password}
+                  onChange={this.handleChange}
                 />
                 <Button>
                     {" "}
@@ -65,7 +65,7 @@ class Login extends Component {
                     "Log in"
                     )}
                 </Button>
-            </Form>
+            </form>
           </FormGroup>
       )
   }
