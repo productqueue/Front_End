@@ -16,25 +16,20 @@ p {
 }
 `;
 
-export let navLink = styled.a`
-color: red;
-padding: 5px;
-`;
-
 export const HeaderComp = styled.div`
 background: ${lam_Grey};
 box-shadow: 10px 5px 5px ${lam_Grey};
 padding: 4px;
 display: flex;
 flex-wrap: wrap;
+justify-content: space-between;
 h2{
-
+    text-decoration-line: ;
     color:White;
 }
 p {
-    background:black;
+    background: ${lam_Red};
     color: white;
-    border: 1px solid grey;
     border-radius:4px;
     height:25px;
     margin: 5px;
@@ -56,13 +51,16 @@ p{
 `;
 
 export const Button = styled.button`
-background:black;
+background: ${lam_Red};
 color: white;
-border: 1px solid grey;
 height:40px;
 width: 120px;
 margin: 5px;
 padding: 4px;
+
+:hover{
+    border: 3px solid grey;
+}
 `;
 
 export const CircleBtn = styled.button`
@@ -77,8 +75,9 @@ padding: 4px;
 `;
 
 export const Form = styled.form`
+display: flex;
+flex-wrap: wrap;
 width: 300px;
-border: 1px solid grey;
 padding: 4px;
 h3 { 
  color:blue;
@@ -86,8 +85,14 @@ h3 {
 `;
 
 export const FormGroup = styled.div`
-border: 1px solid purple;
+width: 400px;
+margin: 100px auto;
+border: 1px solid ${lam_Blue};
+background: ${lam_LightBlue};
 padding: 4px;
+:hover {
+    border: 2px solid ${lam_Blue};
+}
 `;
 
 export const Input = styled.input`

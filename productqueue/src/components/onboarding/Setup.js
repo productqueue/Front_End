@@ -8,7 +8,7 @@ class SelectProjects extends Component {
   constructor(props){
     super(props)
     this.state = {
-        userinfo: [],
+        userInfo: [],
     }
 }
 render(){
@@ -28,5 +28,5 @@ const mapStatetoProps = state => {
   };
   export default connect(
     mapStatetoProps,
-    { }
+    {}
   )(SelectProjects)

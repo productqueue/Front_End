@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {HeaderComp} from '../../styles';
+import {HeaderComp, Nav, Button} from '../../styles';
 
 export class Header extends Component {
 state = {
@@ -16,11 +16,6 @@ state = {
   this.setState({ ...this.state, user_id: user_id });
   return user_id;
   };
-  
-  Logout = () => {
-  localStorage.removeItem("user_id");
-  localStorage.removeItem("token");
-  };
 
   render(){
       const user_id = localStorage.getItem("user_id");
@@ -30,12 +25,15 @@ state = {
                 <Link to={`/`}>
                   <h2>Product Queue</h2>
                 </Link>
-                <Link to={`/register`}>
+                <Nav>
+                  <Link to={`/register`}>
                   <p>Register</p>
-                </Link>
-                <Link to={`/login`}>
-                  <p>Login</p>
-                </Link>
+                  </Link>
+                  <Link to={`/login`}>
+                    <p>Login</p>
+                  </Link>
+                </Nav>
+                
               </HeaderComp>
           );
         } else if (user_id) {
@@ -44,15 +42,17 @@ state = {
                 <Link to={`/`}>
                   <h2>Product Queue</h2>
                 </Link>
-                <Link to="/dashboard">
-                  <p>Dashboard</p>
-                </Link>
-                <Link to={`/settings`}>
-                  <p>Settings</p>
-                </Link>
-                <Link to={`/login`}>
-                  <p onClick={this.Logout}>Logout</p>
-                </Link>
+                <Nav>
+                  <Link to="/dashboard">
+                  <Button>Dashboard</Button>
+                  </Link>
+                  <Link to={`/settings`}>
+                    <Button>Settings</Button>
+                  </Link>
+                  <Link to={`/login`}>
+                    <Button onClick={this.Logout}>Logout</Button>
+                  </Link>
+                </Nav>
               </HeaderComp>
           );
         }

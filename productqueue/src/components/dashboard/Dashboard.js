@@ -28,8 +28,8 @@ class DashBoard extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        message: state.users.message,
-        user: state.users.user
+        
+        user: state
     }
 }
 export default connect(

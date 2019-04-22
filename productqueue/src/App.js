@@ -7,8 +7,12 @@ import { connect } from "react-redux";
 import {AppComp} from './styles';
 // components
 import Header from './components/dashboard/Header';
-import Welcome from './components/onboarding/Welcome';
+
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+
 import Dashboard from './components/dashboard/Dashboard';
+import Welcome from './components/onboarding/Welcome';
 import Setup from './components/onboarding/Setup';
 
 
@@ -33,6 +37,8 @@ class App extends Component {
         <AppComp>
           <Header/>
           <>
+            <Route exact path="/register" component={Register}/>
+            <Route exact path="/login" component={Login}/>
             <Route exact path="/" component={Home} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/new-user" component={Welcome} />

@@ -9,11 +9,19 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import {
-	
+    authReducer,
+    createReducer,
+    readReducer,
+    updateReducer,
+    deleteReducer
 } from './reducers';
 
 const rootReducer = combineReducers({
-	
+	authReducer: authReducer,
+    createReducer: createReducer,
+    readReducer: readReducer,
+    updateReducer: updateReducer,
+    deleteReducer: deleteReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));

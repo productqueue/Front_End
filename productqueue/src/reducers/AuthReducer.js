@@ -1,4 +1,11 @@
-import {} from '../actions';
+import {REGISTER_START,
+REGISTER_SUCCESS,
+REGISTER_FAILURE,
+LOGIN_START,
+LOGIN_SUCCESS,
+LOGIN_FAILURE,
+LOGOUT_START,
+LOGOUT_SUCCESS} from '../actions';
 
 const initialState = {
     user: {},
@@ -9,7 +16,7 @@ const initialState = {
     updatingUser: false,
   }
   
-  const reducer = (state = initialState, action) => {
+  export const authReducer = (state = initialState, action) => {
     switch (action.type) {
       case REGISTER_START:
         return {
@@ -23,7 +30,7 @@ const initialState = {
           error: '',
           registering: false
         }
-      case REGISTER_FAILED:
+      case REGISTER_FAILURE:
         return {
           ...state,
           error: action.payload,
@@ -44,14 +51,14 @@ const initialState = {
           user: action.payload,
           isLoggedIn: true
         }
-      case LOGIN_FAILED:
+      case LOGIN_FAILURE:
         return {
           ...state,
           error: action.payload,
           loggingIn: false,
           isLoggedIn: false
         }
-      case LOGOUT:
+      case LOGOUT_START:
         return {
           ...state,
           loggingOut: true,
@@ -65,3 +72,7 @@ const initialState = {
           user: {},
           isLoggedIn: false
         }
+        default:
+      return state;
+      }
+    }
