@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from './components/auth/PrivateRoute';
 import { connect } from "react-redux";
+import { readInfo } from './actions'
 
 //Styles
 // import { GlobalStyle } from './styles/global';
@@ -31,6 +32,42 @@ class App extends Component {
   state = {
     userInfo: []
   }
+
+  componentDidMount() {
+    this.hydrateStateWithLocalStorage();
+    window.addEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+}
+
+componentWillUnmount() {
+    window.removeEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+    this.saveStateToLocalStorage();
+}
+
+  hydrateStateWithLocalStorage() {
+    for (let key in this.state) {
+      if (localStorage.hasOwnProperty(key)) {
+        let value = localStorage.getItem(key);
+        try {
+          value = JSON.parse(value);
+          this.setState({ [key]: value });
+        } catch (e) {
+          this.setState({ [key]: value });
+        }
+      }
+    }
+  }
+
+  saveStateToLocalStorage() {
+    for (let key in this.state) {
+      localStorage.setItem(key, JSON.stringify(this.state[key]));
+    }
+  }
   
   render() {
     return (
@@ -54,6 +91,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("WWWWWTTTTTFFFFFFFF", state)
   return {
     userInfo: state
   };

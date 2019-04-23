@@ -6,16 +6,54 @@ import {connect} from 'react-redux';
 
 export class Header extends Component {
 state = {
-    user_id: null
+    user_id: null,
+    loggedin: null
   };
 
-  componentDidMount = () => {
-      this.getUserID();
-    };
+
+  componentDidMount() {
+    this.getUserID();
+    this.hydrateStateWithLocalStorage();
+    window.addEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+}
+
+componentWillUnmount() {
+    window.removeEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+    this.saveStateToLocalStorage();
+}
+
+  hydrateStateWithLocalStorage() {
+    for (let key in this.state) {
+      if (localStorage.hasOwnProperty(key)) {
+        let value = localStorage.getItem(key);
+        try {
+          value = JSON.parse(value);
+          this.setState({ [key]: value });
+        } catch (e) {
+          this.setState({ [key]: value });
+        }
+      }
+    }
+  }
+
+  saveStateToLocalStorage() {
+    for (let key in this.state) {
+      localStorage.setItem(key, JSON.stringify(this.state[key]));
+    }
+  }
+
   
   getUserID = () => {
   const user_id = localStorage.getItem("user_id");
-  this.setState({ ...this.state, user_id: user_id });
+  if(user_id === null){
+    this.setState({ ...this.state, user_id: user_id })
+  }
   return user_id;
   };
 
@@ -23,13 +61,13 @@ state = {
     e.preventDefault()
     this.props.logout()
   }
-  
 
   render(){
-      const user_id = this.state.user_id;
+      const id = this.props.user_id;
+      console.log("user id YYYYYYYYYYYYYYYYYYYYOOOOOOOOOOOOOOOOOOO", id)
           return (
             <HeaderComp>
-            {user_id ? (
+            {!id ? (
               <>
                 <Link to={`/`}>
                   <h2>Product Queue</h2>
@@ -44,30 +82,36 @@ state = {
                 </Nav>
               </>
               ) : (
-                <>
-                  <Link to={`/`}>
-                    <h2>Product Queue</h2>
+              <>
+                <Link to={`/`}>
+                  <h2>Product Queue</h2>
+                </Link>
+                <Nav>
+                  <Link to="/dashboard">
+                  <p>Dashboard</p>
                   </Link>
-                  <Nav>
-                    <Link to="/dashboard">
-                    <Button>Dashboard</Button>
-                    </Link>
-                    <Link to={`/settings`}>
-                      <Button>Settings</Button>
-                    </Link>
-                    <Link to={`/login`}>
-                      <Button onClick={this.Logout}>Logout</Button>
-                    </Link>
-                  </Nav>
-                </>
+                  <Link to={`/settings`}>
+                    <p>Settings</p>
+                  </Link>
+                  <Link to={`/login`}>
+                    <p onClick={this.Logout}>Logout</p>
+                  </Link>
+                </Nav>
+              </>
               )}
               </HeaderComp>
           );
       }
       
   }
+
+  const mapStateToProps = state => {
+    return{
+      user_id: state.authReducer.user.id
+    }
+  }
   
 export default connect(
-  null,
+  mapStateToProps,
   {logout}
 )(Header);
