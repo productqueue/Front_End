@@ -1,62 +1,62 @@
-import React,{Component} from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import Project from './Project';
-import { readInfo } from '../../actions';
+import Project from "./Project";
+import { readInfo } from "../../actions";
 
 class Projects extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            projects: []
-        }
-    }
-    
-    componentDidMount(){
-        const token = localStorage.getItem("token")
-        if (localStorage.getItem("token") && localStorage.getItem("user_id")){
-            this.props.readInfo(JSON.stringify(token))
-            this.setState({projects: this.props.projects})
-        }
-    }
-    
-    componentDidUpdate(prevProps){
-        if(prevProps.projects !== this.props.projects){
-            this.setState({projects: this.props.projects})
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      projects: []
+    };
+  }
 
-    render(){
-        
-        // if (localStorage.getItem("token") && localStorage.getItem("user_id")){
-            return(
-                <div>
-                    <p>Let's get started {this.props.user.username} these are your projects</p>
-                    <h2>Projects</h2>
-                    {this.state.projects.map((project,id) =>{
-                        return <Project project={project} key={id}/>
-                    })}
-                </div>
-            )
-            // } else {
-            //     return (
-            //         <div>
-            //         <p>Please log in...</p>
-            //         </div>
-            //     )
-            // }
-        
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    if (localStorage.getItem("token") && localStorage.getItem("user_id")) {
+      this.props.readInfo(token);
+      this.setState({ projects: this.props.projects });
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.projects !== this.props.projects) {
+      this.setState({ projects: this.props.projects });
+    }
+  }
+
+  render() {
+    // if (localStorage.getItem("token") && localStorage.getItem("user_id")){
+    return (
+      <div>
+        <p>
+          Let's get started {this.props.user.username} these are your projects
+        </p>
+        <h2>Projects</h2>
+        {this.state.projects.map((project, id) => {
+          return <Project project={project} key={id} />;
+        })}
+      </div>
+    );
+    // } else {
+    //     return (
+    //         <div>
+    //         <p>Please log in...</p>
+    //         </div>
+    //     )
+    // }
+  }
 }
 
 const mapStateToProps = state => {
-    console.log('mapStateToProps Projects', state)
-    return {
-      projects: state,
-      user: state
-    };
+  console.log("mapStateToProps Projects", state);
+  return {
+    projects: state.readReducer.info,
+    user: state
   };
-  
-  export default connect(
-    mapStateToProps,
-    {readInfo}
-  )(Projects);
+};
+
+export default connect(
+  mapStateToProps,
+  { readInfo }
+)(Projects);

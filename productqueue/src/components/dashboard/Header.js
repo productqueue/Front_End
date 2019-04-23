@@ -64,7 +64,7 @@ componentWillUnmount() {
 
   render(){
       const id = this.props.user_id;
-      console.log("user_id is being passed to header", id)
+      // console.log("user_id is being passed to header", id)
           return (
             <HeaderComp>
             {!id ? (
