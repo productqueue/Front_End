@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {HeaderComp, Nav, Button} from '../../styles';
+import {HeaderComp, Nav} from '../../styles';
 import {logout} from '../../actions';
 import {connect} from 'react-redux';
 
@@ -64,7 +64,7 @@ componentWillUnmount() {
 
   render(){
       const id = this.props.user_id;
-      console.log("user id YYYYYYYYYYYYYYYYYYYYOOOOOOOOOOOOOOOOOOO", id)
+      console.log("user_id is being passed to header", id)
           return (
             <HeaderComp>
             {!id ? (

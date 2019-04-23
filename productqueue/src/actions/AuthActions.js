@@ -21,7 +21,7 @@ export const register = creds => dispatch => {
   return axios
     .post(`${URL}/api/users/register`, creds)
     .then(res => {
-      
+      console.log("register actions resdata",res.data)
       localStorage.setItem('token', res.data.token)
       dispatch({ type: REGISTER_SUCCESS })
     })
@@ -37,7 +37,7 @@ export const login = creds => dispatch => {
   return axios
     .post(`${URL}/api/users/login`, creds)
     .then(res => {
-      console.log("XXXXXXXXXX",res.data)
+      console.log("login actions resdata",res.data)
       localStorage.setItem('token', res.data.token)
       localStorage.setItem("user_id", res.data.id)
       localStorage.setItem('data', JSON.stringify(res.data))
@@ -55,7 +55,7 @@ export const logout = () => dispatch => {
   localStorage.removeItem('token')
   localStorage.removeItem('user_id')
   localStorage.removeItem('data')
-  console.log("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
+  console.log("loged out")
   dispatch({ type: LOGOUT_SUCCESS })
   window.location.reload()
 }

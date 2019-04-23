@@ -91,7 +91,7 @@ componentWillUnmount() {
 }
 
 const mapStateToProps = state => {
-  console.log("WWWWWTTTTTFFFFFFFF", state)
+  console.log("mapStateToProps App", state)
   return {
     userInfo: state
   };
@@ -99,5 +99,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {}
+  {readInfo}
 )(App);
