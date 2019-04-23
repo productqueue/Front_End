@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Project from "./Project";
-import { readInfo } from "../../actions";
+import { readInfo, readUserInfo } from "../../actions";
 
 class Projects extends Component {
   constructor(props) {
@@ -12,9 +12,13 @@ class Projects extends Component {
   }
 
   componentDidMount() {
+    const data = JSON.parse(localStorage.getItem('data'))
     const token = localStorage.getItem("token");
-    if (localStorage.getItem("token") && localStorage.getItem("user_id")) {
+    if (data.role === 'admin') {
       this.props.readInfo(token);
+      this.setState({ projects: this.props.projects });
+    } else {
+      this.props.readUserInfo(data.id, token);
       this.setState({ projects: this.props.projects });
     }
   }
@@ -58,5 +62,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { readInfo }
+  { readInfo, readUserInfo }
 )(Projects);

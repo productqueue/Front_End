@@ -24,10 +24,12 @@ export const readInfo = token => dispatch => {
 };
 
 // Read info
-export const readUserInfo = token => dispatch => {
+export const readUserInfo = (data, token) => dispatch => {
   dispatch({ type: READ_START });
   return axios
-    .get(`${URL}/api/projects/${user_id}`, token)
+    .get(`${URL}/api/projects/${data}`,{
+      headers: { Authorization: token, "Content-Type": "application/json" }
+    })
     .then(res => {
       console.log("redInfo Action", res);
       localStorage.setItem("data", JSON.stringify(res.data));
