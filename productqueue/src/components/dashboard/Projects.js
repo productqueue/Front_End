@@ -33,7 +33,7 @@ class Projects extends Component {
     return (
       <div>
         <p>
-          Let's get started {this.props.user.username} these are your projects
+          Let's get started {this.props.user.first_name} these are your projects
         </p>
         <h2>Projects</h2>
         {this.state.projects.map((project, id) => {

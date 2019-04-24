@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL, user_id } from "../constants";
+import { URL } from "../constants";
 
 export const READ_START = "READ_START";
 export const READ_SUCCESS = "READ_SUCCESS";
@@ -15,7 +15,7 @@ export const readInfo = token => dispatch => {
     })
     .then(res => {
       console.log("readInfo Action", res);
-      localStorage.setItem("data", JSON.stringify(res.data));
+      // localStorage.setItem("data", res.data);
       dispatch({ type: READ_SUCCESS, payload: res.data });
     })
     .catch(err => {

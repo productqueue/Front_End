@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {URL, user_id} from '../constants'
+import {URL} from '../constants'
 
 //Exports
 export const CREATE_START = "CREATE_START";
@@ -8,10 +8,12 @@ export const CREATE_FAILURE = "CREATE_FAILURE";
 
 
 // Create Info
-export const createInfo = (API) => dispatch => {
+export const createInfo = (newInfo, data, token) => dispatch => {
     dispatch({ type: CREATE_START });
     return axios
-      .post(`${URL}/api/${API}/${user_id}`)
+      .post(`${URL}/api/projects/${data}`, newInfo, {
+        headers: { Authorization: token, "Content-Type": "application/json" }
+      })
       .then(res => {
         localStorage.setItem("data", JSON.stringify(res.data))
         dispatch({ type: CREATE_SUCCESS, payload: res.data });

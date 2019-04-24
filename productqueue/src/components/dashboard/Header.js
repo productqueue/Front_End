@@ -87,12 +87,12 @@ componentWillUnmount() {
                   <h2>Product Queue</h2>
                 </Link>
                 <Nav>
-                  {/* <Link to="/dashboard">
+                  <Link to="/dashboard">
                   <p>Dashboard</p>
                   </Link>
                   <Link to={`/settings`}>
                     <p>Settings</p>
-                  </Link> */}
+                  </Link>
                   <Link to={`/login`}>
                     <p onClick={this.Logout}>Logout</p>
                   </Link>

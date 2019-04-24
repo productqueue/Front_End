@@ -76,7 +76,7 @@ class DashBoard extends Component {
         return(
             <div>
                 <h1>DashBoard</h1>
-                <p>{this.props.message}</p>
+                <p>welcome {this.state.first_name}</p>
                 <div>
                     <Button onClick={this.toggleProjects.bind(this)}>Projects</Button>
                     <Button onClick={this.toggleAccount.bind(this)}>Settings</Button>

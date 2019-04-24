@@ -6,14 +6,13 @@ export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
 export const UPDATE_FAILURE = "UPDATE_FAILURE";
 
 // Update Info
-export const updateInfo = (data, token) => dispatch => {
+export const updateProjectInfo = (data, newInfo, token) => dispatch => {
     dispatch({ type: UPDATE_START });
     return axios
-      .put(`${URL}/api/users/${data.id}`,{
+      .put(`${URL}/api/projects/${data.id}/${newInfo.id}`, newInfo, {
         headers: {'Authorization': token}
       })
       .then(res => {
-        localStorage.setItem("data", JSON.stringify(res.data))
         dispatch({ type: UPDATE_SUCCESS, payload: res.data });
       })
       .catch(err => {
@@ -22,14 +21,13 @@ export const updateInfo = (data, token) => dispatch => {
   };
   
   // Update User Info
-export const updateUserInfo = (data, token) => dispatch => {
+export const updateUserInfo = (newInfo, token) => dispatch => {
   dispatch({ type: UPDATE_START });
   return axios
-    .put(`${URL}/api/users/${data.id}`, data, {
+    .put(`${URL}/api/users/${newInfo.id}`, newInfo, {
       headers: {'Authorization': token}
     })
     .then(res => {
-      localStorage.setItem("data", JSON.stringify(res.data))
       dispatch({ type: UPDATE_SUCCESS, payload: res.data });
     })
     .catch(err => {
