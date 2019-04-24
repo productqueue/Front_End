@@ -30,7 +30,6 @@ class Projects extends Component {
   }
 
   render() {
-    // if (localStorage.getItem("token") && localStorage.getItem("user_id")){
     return (
       <div>
         <p>
@@ -40,15 +39,19 @@ class Projects extends Component {
         {this.state.projects.map((project, id) => {
           return <Project project={project} key={id} />;
         })}
+        <form onSubmit={this.loginAttempt}>
+          <label htmlFor="search">Search through your project ideas.</label>
+          <input
+            id="search"
+            type="text"
+            name="search"
+            placeholder="Search projects..."
+            value={this.state.projects}
+            onChange={this.handleChange}
+          />
+        </form>
       </div>
     );
-    // } else {
-    //     return (
-    //         <div>
-    //         <p>Please log in...</p>
-    //         </div>
-    //     )
-    // }
   }
 }
 
@@ -56,7 +59,7 @@ const mapStateToProps = state => {
   console.log("mapStateToProps Projects", state);
   return {
     projects: state.readReducer.info,
-    user: state
+    user: state.readReducer.info
   };
 };
 

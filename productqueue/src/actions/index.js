@@ -31,7 +31,8 @@ export {
     UPDATE_START,
     UPDATE_SUCCESS,
     UPDATE_FAILURE,
-    updateInfo
+    updateInfo,
+    updateUserInfo
 } from './UpdateActions';
 
 export {
