@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { register } from '../../actions';
-import {Button, Form, FormGroup} from '../../styles';
+import {Button, FormGroup} from '../../styles';
 import Loader from 'react-loader-spinner';
 
 class Register extends Component {

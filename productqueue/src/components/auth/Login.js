@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login } from '../../actions';
-import {Button, Form, FormGroup} from '../../styles';
+import { login, readInfo } from '../../actions';
+import {Button, FormGroup} from '../../styles';
 import Loader from 'react-loader-spinner';
 
 class Login extends Component {
@@ -29,7 +29,7 @@ class Login extends Component {
       .login(this.state.credentials)
       .then(() => {
         this.props.history.push("/dashboard");
-      });
+      })
   };
 
 
@@ -73,5 +73,5 @@ class Login extends Component {
 
 export default connect(
     null,
-    { login }
+    { login, readInfo }
   )(Login)

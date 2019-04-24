@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {Button} from '../../styles';
 import {connect} from 'react-redux';
 import {} from "../../actions";
+import Projects from './Projects';
 
-class DashBoard extends React.Component {
+class DashBoard extends Component {
     state = {
         info: [],
         user:{}
@@ -46,6 +47,15 @@ class DashBoard extends React.Component {
         }
       }
 
+      handleChange = e => {
+        this.setState({
+          projects: {
+            ...this.state.projects,
+            [e.target.name]: e.target.value
+          }
+        });
+      };
+
     render() {
         
         return(
@@ -55,6 +65,18 @@ class DashBoard extends React.Component {
                 <div>
                     <Link to={'/projects'}><Button>My Projects</Button></Link>
                     <Link to={'/settings'}><Button>Settings</Button></Link>
+                    <form onSubmit={this.loginAttempt}>
+                      <label htmlFor="search">Search through your project ideas.</label>
+                      <input
+                        id="search"
+                        type="text"
+                        name="search"
+                        placeholder="Search projects..."
+                        value={this.state.projects}
+                        onChange={this.handleChange}
+                      />
+                    </form>
+                    <Projects/>
                 </div>
             </div>
         )
@@ -63,8 +85,8 @@ class DashBoard extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log('mapStateToProps DashBoard', state)
     return {
-        
         user: state
     }
 }
