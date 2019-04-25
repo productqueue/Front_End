@@ -81,15 +81,7 @@ class DashBoard extends Component {
                     <Button onClick={this.toggleProjects.bind(this)}>Projects</Button>
                     <Button onClick={this.toggleAccount.bind(this)}>Settings</Button>
                     {!this.state.togglePro && <Projects/>}
-                    {!this.state.toggleAcc && 
-                    <AccountInfo 
-                      user={this.props.user} 
-                      disabled={this.state.disabled}
-                      editHandler={this.editHandler}
-                      changeHandler={this.changeHandler}
-                      updateUser={this.updateUser}
-                    />}
-                    
+                    {!this.state.toggleAcc && <AccountInfo/>}
                 </div>
             </div>
         )

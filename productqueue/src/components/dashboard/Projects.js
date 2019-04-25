@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Project from "./Project";
+import NewProject from './NewProject';
 import { readInfo, readUserInfo } from "../../actions";
 
 class Projects extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: []
+      projects: [],
+      togglePro: true,
     };
   }
 
@@ -29,6 +31,13 @@ class Projects extends Component {
     }
   }
 
+  toggleProjects () {
+    this.setState({
+      togglePro: !this.state.togglePro,
+      toggleAcc: true
+    })
+  }
+
   render() {
     return (
       <div>
@@ -36,11 +45,9 @@ class Projects extends Component {
           Let's get started {this.props.user.first_name} these are your projects
         </p>
         <h2>Projects</h2>
-        {this.state.projects.map((project, id) => {
-          return <Project project={project} key={id} />;
-        })}
-        <form onSubmit={this.loginAttempt}>
-          <label htmlFor="search">Search through your project ideas.</label>
+        <button onClick={this.toggleProjects.bind(this)}>New Project</button>
+        {!this.state.togglePro && <NewProject/>}
+        {/* <form onSubmit={this.search}>
           <input
             id="search"
             type="text"
@@ -49,7 +56,11 @@ class Projects extends Component {
             value={this.state.projects}
             onChange={this.handleChange}
           />
-        </form>
+          <button>Search</button>
+        </form> */}
+        {this.state.projects.map((project, id) => {
+          return <Project project={project} key={id} />;
+        })}
       </div>
     );
   }

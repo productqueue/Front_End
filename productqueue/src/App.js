@@ -81,9 +81,9 @@ componentWillUnmount() {
             <Route exact path="/login" component={Login}/>
             <Route exact path="/" component={Home} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/new-user" component={Welcome} />
-            <Route exact path="/new-user/setup" component={Setup} />
-            <Route exact path="/edit-project/:id" component={ProjectForm}/>
+            <PrivateRoute exact path="/new-user" component={Welcome} />
+            <PrivateRoute exact path="/new-user/setup" component={Setup} />
+            <PrivateRoute exact path="/edit-project/:id" component={ProjectForm}/>
           </>
         </AppComp>
       </Router>

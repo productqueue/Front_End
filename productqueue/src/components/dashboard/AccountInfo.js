@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {updateUserInfo} from '../../actions';
+import {Button} from '../../styles';
 
 
 class AccountInfo extends Component {
@@ -103,7 +104,7 @@ render(){
                 defaultValue={this.state.user.company}
                 disabled={this.state.disabled}
                 />
-                {this.disabled ? null : <button type="submit">Submit</button>}
+                {this.state.disabled ? null : <button type="submit">Submit</button>}
             </form>
             </fieldset>
         </div>

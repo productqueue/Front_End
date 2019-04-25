@@ -59,6 +59,9 @@ componentWillUnmount() {
 
   Logout = e => {
     e.preventDefault()
+    localStorage.removeItem('token')
+    localStorage.removeItem('user_id')
+    localStorage.removeItem('data')
     this.props.logout()
   }
 

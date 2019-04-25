@@ -21,7 +21,6 @@ class ProjectInfo extends Component {
       const token = localStorage.getItem("token");
       const data = localStorage.getItem('data')
       const newInfo = this.state.project;
-      console.log("NEEEEEEEEEEEEEEEEEEEEEEW", newInfo)
       e.preventDefault()
       this.props.updateProjectInfo(data, newInfo, token)
       this.setState({
