@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {createInfo} from '../../actions';
+
 class NewProject extends Component {
     constructor(props) {
         super(props)
@@ -19,7 +21,7 @@ class NewProject extends Component {
         const newInfo = this.state.project;
         console.log("NEEEEEEEEEEEEEEEEEEEEEEW", newInfo)
         e.preventDefault()
-        this.props.createProjectInfo(data, newInfo, token)
+        this.props.createInfo(data, newInfo, token)
         this.setState({
           disabled: true
         })
@@ -52,7 +54,7 @@ render(){
         <div>
             <h3>Create New Project</h3>
             <fieldset disabled={this.state.disabled}>
-              <form onSubmit={this.updateProject}>
+              <form onSubmit={this.createProject}>
                   <p onClick={() => this.editHandler()}>
                   {this.state.disabled ? 'EDIT' : 'CANCEL'}
                   </p>
@@ -116,7 +118,7 @@ render(){
                   disabled={this.state.disabled}
                   />
                   {this.state.disabled ? null : <button type="submit">Submit</button>}
-                  {this.state.disabled ? null : <button onClick={this.deleteProject}>Delete</button>}
+                  {/* {this.state.disabled ? null : <button onClick={this.deleteProject}>Delete</button>} */}
               </form>
               </fieldset>
         </div>
@@ -132,5 +134,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {}
+    {createInfo}
 )(NewProject);
