@@ -16,6 +16,7 @@ import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
 import Welcome from './components/onboarding/Welcome';
 import Setup from './components/onboarding/Setup';
+import ProjectForm from './components/dashboard/ProjectForm';
 
 
 const Home = props => {
@@ -82,6 +83,7 @@ componentWillUnmount() {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/new-user" component={Welcome} />
             <Route exact path="/new-user/setup" component={Setup} />
+            <Route exact path="/edit-project/:id" component={ProjectForm}/>
           </>
         </AppComp>
       </Router>

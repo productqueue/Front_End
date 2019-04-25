@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
 import {Button} from '../../styles';
 import {connect} from 'react-redux';
 import {} from "../../actions";
 import Projects from './Projects';
+import AccountInfo from './AccountInfo';
 
 class DashBoard extends Component {
     state = {
         info: [],
-        user:{}
+        user:{},
+        toggleAcc: true,
+        togglePro: true,
       };
 
       componentDidMount() {
@@ -56,27 +58,38 @@ class DashBoard extends Component {
         });
       };
 
+      toggleAccount () {
+        this.setState({
+          toggleAcc: !this.state.toggleAcc,
+          togglePro: true
+        })
+      }
+      toggleProjects () {
+        this.setState({
+          togglePro: !this.state.togglePro,
+          toggleAcc: true
+        })
+      }
+
     render() {
         
         return(
             <div>
                 <h1>DashBoard</h1>
-                <p>{this.props.message}</p>
+                <p>welcome {this.state.first_name}</p>
                 <div>
-                    <Link to={'/projects'}><Button>My Projects</Button></Link>
-                    <Link to={'/settings'}><Button>Settings</Button></Link>
-                    <form onSubmit={this.loginAttempt}>
-                      <label htmlFor="search">Search through your project ideas.</label>
-                      <input
-                        id="search"
-                        type="text"
-                        name="search"
-                        placeholder="Search projects..."
-                        value={this.state.projects}
-                        onChange={this.handleChange}
-                      />
-                    </form>
-                    <Projects/>
+                    <Button onClick={this.toggleProjects.bind(this)}>Projects</Button>
+                    <Button onClick={this.toggleAccount.bind(this)}>Settings</Button>
+                    {!this.state.togglePro && <Projects/>}
+                    {!this.state.toggleAcc && 
+                    <AccountInfo 
+                      user={this.props.user} 
+                      disabled={this.state.disabled}
+                      editHandler={this.editHandler}
+                      changeHandler={this.changeHandler}
+                      updateUser={this.updateUser}
+                    />}
+                    
                 </div>
             </div>
         )
@@ -87,7 +100,7 @@ class DashBoard extends Component {
 const mapStateToProps = state => {
   console.log('mapStateToProps DashBoard', state)
     return {
-        user: state
+        user: state.readReducer.user
     }
 }
 export default connect(

@@ -23,14 +23,16 @@ export {
     READ_START,
     READ_SUCCESS,
     READ_FAILURE,
-    readInfo
+    readInfo,
+    readUserInfo
 } from './ReadActions';
 
 export {
     UPDATE_START,
     UPDATE_SUCCESS,
     UPDATE_FAILURE,
-    updateInfo
+    updateProjectInfo,
+    updateUserInfo
 } from './UpdateActions';
 
 export {

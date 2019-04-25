@@ -6,7 +6,7 @@ import {Button} from '../../styles';
 const Welcome = () => {
     return (
       <div>
-        <h2>Welcome to Product Que</h2>
+        <h2>Welcome to Product Queue</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex soluta necessitatibus praesentium? Obcaecati sint soluta assumenda sunt culpa atque, saepe enim libero dignissimos porro modi, non iure, error impedit deleniti?
         </p>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL, user_id } from "../constants";
+import { URL } from "../constants";
 
 export const READ_START = "READ_START";
 export const READ_SUCCESS = "READ_SUCCESS";
@@ -15,7 +15,7 @@ export const readInfo = token => dispatch => {
     })
     .then(res => {
       console.log("readInfo Action", res);
-      localStorage.setItem("data", JSON.stringify(res.data));
+      // localStorage.setItem("data", res.data);
       dispatch({ type: READ_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -24,10 +24,12 @@ export const readInfo = token => dispatch => {
 };
 
 // Read info
-export const readUserInfo = token => dispatch => {
+export const readUserInfo = (data, token) => dispatch => {
   dispatch({ type: READ_START });
   return axios
-    .get(`${URL}/api/projects/${user_id}`, token)
+    .get(`${URL}/api/projects/${data}`,{
+      headers: { Authorization: token, "Content-Type": "application/json" }
+    })
     .then(res => {
       console.log("redInfo Action", res);
       localStorage.setItem("data", JSON.stringify(res.data));
