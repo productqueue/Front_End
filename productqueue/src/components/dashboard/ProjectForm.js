@@ -61,6 +61,7 @@ class ProjectInfo extends Component {
         })
       }
     }
+    
     render() {
         return (
       <ProjectCard>
