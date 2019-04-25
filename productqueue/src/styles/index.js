@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {lam_Red, lam_DarkBlue, lam_Blue, lam_LightBlue, lam_Grey} from './variables';
+import {lam_Red, lam_Blue, lam_LightBlue, lam_Grey} from './variables';
 // App level components
 export const AppComp = styled.div`
 padding: 4px;

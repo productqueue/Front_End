@@ -4,7 +4,6 @@ import {ProjectCard, Button} from "../../styles";
 
 const Project = props => {
   const data = JSON.parse(localStorage.getItem('data'))
-  console.log('PPPPPPPPPPPPPPPPPPPP',props)
   return (
     <ProjectCard>
       

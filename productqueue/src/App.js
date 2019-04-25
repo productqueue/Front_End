@@ -93,7 +93,6 @@ componentWillUnmount() {
 }
 
 const mapStateToProps = state => {
-  console.log("mapStateToProps App", state)
   return {
     userInfo: state
   };

@@ -7,7 +7,10 @@ class NewProject extends Component {
         super(props)
         this.state = {
           disabled: false,
-          project: []
+          project: {
+            project_name: '',
+            description: ''
+          }
         }
       }
 
@@ -21,7 +24,7 @@ class NewProject extends Component {
         const newInfo = this.state.project;
         console.log("NEEEEEEEEEEEEEEEEEEEEEEW", newInfo)
         e.preventDefault()
-        this.props.createInfo(data, newInfo, token)
+        this.props.createInfo(newInfo, data, token)
         this.setState({
           disabled: true
         })
@@ -60,61 +63,20 @@ render(){
                   </p>
                   <label htmlFor="project_name">Project Name: </label>
                   <input
-                  type="text"
                   id="project_name"
-                  name={this.state.project.name}
-                  onChange={this.changeHandler}
-                  defaultValue={this.state.project.name}
-                  disabled={this.disabled}
-                  />
-  
-                  <label htmlFor="first_name">First Name: </label>
-                  <input
                   type="text"
-                  id="first_name"
-                  name={this.state.project.first_name}
+                  name="project_name"
                   onChange={this.changeHandler}
-                  defaultValue={this.state.project.first_name}
-                  disabled={this.disabled}
-                  />
-  
-                  <label htmlFor="last_name">Last Name: </label>
-                  <input
-                  type="text"
-                  id="last_name"
-                  name="last_name"
-                  placeholder={this.state.project.last_name}
-                  onChange={this.changeHandler}
-                  defaultValue={this.state.project.last_name}
-                  disabled={this.disabled}
-                  aria-label="email"
-                  />
-  
-                  <label htmlFor="company">Company: </label>
-                  <input
-                  type="text"
-                  id="company"
-                  name={this.state.project.company}
-                  onChange={this.changeHandler}
-                  defaultValue={this.state.project.company}
+                  defaultValue={this.state.project.project_name}
                   disabled={this.disabled}
                   />
                   <label htmlFor="discription">Discription: </label>
                   <input
+                  id="description"
                   type="text"
-                  id="discription"
-                  name={this.state.project.description}
+                  name="description"
                   onChange={this.changeHandler}
                   defaultValue={this.state.project.description}
-                  disabled={this.state.disabled}
-                  />
-                  <label htmlFor="status">Status: </label>
-                  <input
-                  type="text"
-                  id="status"
-                  name={this.state.project.status}
-                  onChange={this.changeHandler}
-                  defaultValue={this.state.project.status}
                   disabled={this.state.disabled}
                   />
                   {this.state.disabled ? null : <button type="submit">Submit</button>}
