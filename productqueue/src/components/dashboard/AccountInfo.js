@@ -19,18 +19,17 @@ class AccountInfo extends Component {
       }
 
       updateUser = e => {
-        console.log("updateUser has fired", e)
         const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem('data'));
         const newInfo = this.state.user;
         e.preventDefault()
-        this.props.updateUserInfo(newInfo, token)
+        this.props.updateUserInfo(newInfo, token, user)
         this.setState({
           disabled: true
         })
       }
 
       changeHandler = e => {
-        console.log("changeHandler has fired", e)
         this.setState({
           user: {
             ...this.state.user,
@@ -66,7 +65,6 @@ render(){
                   name="first_name"
                   onChange={this.changeHandler}
                   defaultValue={this.state.user.first_name}
-                  disabled={this.state.disabled}
                   />
                   <i aria-hidden="true" className="user icon" />
                 </div>
@@ -80,7 +78,6 @@ render(){
                   name="last_name"
                   onChange={this.changeHandler}
                   defaultValue={this.state.user.last_name}
-                  disabled={this.state.disabled}
                   />
                   <i aria-hidden="true" className="user icon" />
                 </div>
@@ -95,7 +92,6 @@ render(){
                   placeholder="ex. example@example.com"
                   onChange={this.changeHandler}
                   defaultValue={this.state.user.email}
-                  disabled={this.state.disabled}
                   aria-label="email"
                   />
                   <i aria-hidden="true" className="user icon" />
@@ -110,7 +106,6 @@ render(){
                   name="company"
                   onChange={this.changeHandler}
                   defaultValue={this.state.user.company}
-                  disabled={this.state.disabled}
                   />
                   <i aria-hidden="true" className="user icon" />
                 </div>

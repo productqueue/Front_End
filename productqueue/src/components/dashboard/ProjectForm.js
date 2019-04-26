@@ -17,10 +17,10 @@ class ProjectInfo extends Component {
 
   updateProject = e => {
     const token = localStorage.getItem("token");
-    const data = JSON.parse(localStorage.getItem("data"));
-    const newInfo = JSON.stringify(this.state.project);
+    const userId = this.state.project.user_id;
+    const newInfo = this.state.project;
     e.preventDefault();
-    this.props.updateProjectInfo(data, newInfo, token);
+    this.props.updateProjectInfo(userId, newInfo, token);
     this.setState({
       disabled: true
     });
