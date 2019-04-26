@@ -18,7 +18,7 @@ import ProjectForm from './components/dashboard/ProjectForm';
 
 const Home = () => {
   return(
-    <div>
+    <div className="welcome container">
       <h1>Welcome to Product Queue</h1>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam voluptatibus maxime labore nostrum nulla in magnam excepturi quasi sapiente veritatis repudiandae amet ullam distinctio, quaerat rerum dignissimos tenetur nesciunt molestiae?</p>
     </div>

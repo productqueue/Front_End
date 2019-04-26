@@ -15,7 +15,10 @@
     width: 100px;
 }
 
-
+.welcome {
+    margin: 30px auto;
+    max-width: 500px;
+}
 .dash-splash {
     margin: 0 auto 30px;
     padding: 10px;
