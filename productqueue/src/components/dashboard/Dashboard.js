@@ -76,7 +76,7 @@ class DashBoard extends Component {
             <div className="dashboard">
               <div className="dash-splash">
                 <h1>DashBoard</h1>
-                <p>welcome {this.state.first_name}</p>
+                <p>welcome to Product Queue. this is </p>
                 <div>
                   <button className="ui red button" onClick={this.toggleProjects.bind(this)}>Projects</button>
                   <button className="ui red button" onClick={this.toggleAccount.bind(this)}>Settings</button>

@@ -18,7 +18,7 @@ class ProjectInfo extends Component {
   updateProject = e => {
     const token = localStorage.getItem("token");
     const data = JSON.parse(localStorage.getItem("data"));
-    const newInfo = this.state.project;
+    const newInfo = JSON.stringify(this.state.project);
     e.preventDefault();
     this.props.updateProjectInfo(data, newInfo, token);
     this.setState({
@@ -63,12 +63,8 @@ class ProjectInfo extends Component {
   render() {
     return (
       <>
-        <fieldset disabled={this.state.disabled}>
           <div className="ui placeholder segment">
             <form className="ui form" onSubmit={this.updateProject}>
-              <p onClick={() => this.editHandler()}>
-                {this.state.disabled ? "EDIT" : "CANCEL"}
-              </p>
               <div className="field">
                 <label htmlFor="project_name">Project Name: </label>
                 <div className="ui left icon input">
@@ -157,8 +153,7 @@ class ProjectInfo extends Component {
                   <i aria-hidden="true" className="user icon" />
                 </div>
               </div>
-
-              <div>
+              <div className="container">
                 <button className="ui red button" type="submit">
                   Submit
                 </button>
@@ -168,7 +163,6 @@ class ProjectInfo extends Component {
               </div>
             </form>
           </div>
-        </fieldset>
       </>
     );
   }

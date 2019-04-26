@@ -8,6 +8,9 @@ export const UPDATE_FAILURE = "UPDATE_FAILURE";
 // Update Info
 export const updateProjectInfo = (data, newInfo, token) => dispatch => {
     dispatch({ type: UPDATE_START });
+    console.log('SSSSSSSSSSSSSSSSSSSSSSSSSSS',data)
+    console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTT',newInfo)
+    console.log('JJJJJJJJJJJJJJJJJJJJJJJJJJJ',token)
     return axios
       .put(`${URL}/api/projects/${data.id}/${newInfo.id}`, newInfo, {
         headers: {'Authorization': token}

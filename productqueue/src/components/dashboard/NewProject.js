@@ -14,15 +14,10 @@ class NewProject extends Component {
         }
       }
 
-      // componentDidMount(){
-      //     this.setState({project: this.props.project})
-      // }
-
       createProject = e => {
         const token = localStorage.getItem("token");
         const data = JSON.parse(localStorage.getItem('data'))
         const newInfo = this.state.project;
-        // console.log("NEEEEEEEEEEEEEEEEEEEEEEW", newInfo)
         e.preventDefault()
         this.props.createInfo(newInfo, data, token)
         this.setState({
@@ -54,39 +49,39 @@ class NewProject extends Component {
 
 render(){
     return(
-        <>
-            <h3>Create New Project</h3>
-              <div className="ui placeholder segment">
-                <form className="ui form" onSubmit={this.createProject}>
-                    <div className="field">
-                      <label htmlFor="name">Project Name: </label>
-                      <div className="ui left icon input">
-                        <input
-                        id="name"
-                        type="text"
-                        name="name"
-                        onChange={this.changeHandler}
-                        disabled={this.disabled}
-                        />
-                        <i aria-hidden="true" className="user icon" />
-                      </div>
-                    </div>
-                    <div className="field">
-                      <label htmlFor="description">Description: </label>
-                      <div className="ui left icon input">
-                        <input
-                        id="description"
-                        type="text"
-                        name="description"
-                        onChange={this.changeHandler}
-                        disabled={this.state.disabled}
-                        />
-                        <i aria-hidden="true" className="user icon" />
-                      </div>
-                    </div>
-                    <button className="ui red button" type="submit">Submit</button>
-                </form>
-              </div>
+      <>
+        <h3>Create New Project</h3>
+          <div className="ui placeholder segment">
+            <form className="ui form" onSubmit={this.createProject}>
+                <div className="field">
+                  <label htmlFor="name">Project Name: </label>
+                  <div className="ui left icon input">
+                    <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    onChange={this.changeHandler}
+                    disabled={this.disabled}
+                    />
+                    <i aria-hidden="true" className="user icon" />
+                  </div>
+                </div>
+                <div className="field">
+                  <label htmlFor="description">Description: </label>
+                  <div className="ui left icon input">
+                    <input
+                    id="description"
+                    type="text"
+                    name="description"
+                    onChange={this.changeHandler}
+                    disabled={this.state.disabled}
+                    />
+                    <i aria-hidden="true" className="user icon" />
+                  </div>
+                </div>
+                <button className="ui red button" type="submit">Submit</button>
+            </form>
+          </div>
         </>
     )
 }

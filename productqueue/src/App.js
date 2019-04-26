@@ -71,7 +71,7 @@ componentWillUnmount() {
     return (
       <Router>
         {/* <GlobalStyle/> */}
-        <div>
+        <div className='app'>
           <Header/>
           <>
             <Route exact path="/register" component={Register}/>

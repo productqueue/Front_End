@@ -56,7 +56,7 @@ render(){
     return(
         <div className="ui placeholder segment">
             <h2>Account Info</h2>
-            <form onSubmit={this.updateUser}>
+            <form className="ui form" onSubmit={this.updateUser}>
               <div className="field">
                 <label htmlFor="first_name">First Name</label>
                 <div className="ui left icon input">
@@ -115,7 +115,6 @@ render(){
                   <i aria-hidden="true" className="user icon" />
                 </div>
               </div>
-            
             <button className="ui red button" type="submit">Submit</button>
           </form>
         </div>

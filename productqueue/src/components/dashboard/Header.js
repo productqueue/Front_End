@@ -68,8 +68,8 @@ export class Header extends Component {
       <div className="header">
         {!id ? (
           <div className="header-bar container">
+            <img className="header-img" src="../../assets/Lambda_Logo.png" alt="logo"></img>
             <Link to={`/`}>
-              <img src="../../assets/Lambda_Logo.png" alt="logo"/>
               <h2>Product Queue</h2>
             </Link>
             <div className="nav">
