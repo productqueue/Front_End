@@ -82,7 +82,7 @@ class Register extends Component {
                       value={this.state.credentials.company}
                       onChange={this.handleChange}
                     />
-                    <i aria-hidden="true" className="user icon"></i>
+                    <i aria-hidden="true" className="building icon"></i>
                   </div>
                 </div>
                 <div className="field">
@@ -96,7 +96,7 @@ class Register extends Component {
                       value={this.state.credentials.email}
                       onChange={this.handleChange}
                     />
-                    <i aria-hidden="true" className="user icon"></i>
+                    <i aria-hidden="true" className="address card icon"></i>
                   </div>
                 </div>
                 <div className="field">

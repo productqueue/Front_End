@@ -76,7 +76,7 @@ class ProjectInfo extends Component {
                     defaultValue={this.state.project.name}
                     disabled={this.disabled}
                   />
-                  <i aria-hidden="true" className="user icon" />
+                  <i aria-hidden="true" className="briefcase icon" />
                 </div>
               </div>
               <div className="field">
@@ -121,12 +121,11 @@ class ProjectInfo extends Component {
                     defaultValue={this.state.project.company}
                     disabled={this.disabled}
                   />
-                  <i aria-hidden="true" className="user icon" />
+                  <i aria-hidden="true" className="building icon" />
                 </div>
               </div>
-
               <div className="field">
-                <label htmlFor="discription">Discription: </label>
+                <label htmlFor="discription">Description: </label>
                 <div className="ui left icon input">
                   <input
                     type="text"
@@ -136,7 +135,7 @@ class ProjectInfo extends Component {
                     defaultValue={this.state.project.description}
                     disabled={this.state.disabled}
                   />
-                  <i aria-hidden="true" className="user icon" />
+                  <i aria-hidden="true" className="clipboard icon" />
                 </div>
               </div>
               <div className="field">

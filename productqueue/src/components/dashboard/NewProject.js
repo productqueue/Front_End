@@ -63,7 +63,7 @@ render(){
                     onChange={this.changeHandler}
                     disabled={this.disabled}
                     />
-                    <i aria-hidden="true" className="user icon" />
+                    <i aria-hidden="true" className="briefcase icon" />
                   </div>
                 </div>
                 <div className="field">
@@ -76,7 +76,7 @@ render(){
                     onChange={this.changeHandler}
                     disabled={this.state.disabled}
                     />
-                    <i aria-hidden="true" className="user icon" />
+                    <i aria-hidden="true" className="clipboard icon" />
                   </div>
                 </div>
                 <button className="ui red button" type="submit">Submit</button>
