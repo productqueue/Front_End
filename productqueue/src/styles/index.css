@@ -1,0 +1,52 @@
+.app{
+    background: #55596d04;
+}
+.header-bar{
+    display: flex;
+    justify-content: space-between;
+    background: rgb(0,32,112);
+    background: linear-gradient(90deg, rgba(0,32,112,1) 0%, rgba(30,80,238,1) 35%, rgba(8,173,221,1) 100%);
+    box-shadow: 1px 6px 10px -2px rgba(0,0,0,0.4);
+    padding: 10px;
+    
+}
+
+.header-img {
+    height:30px;
+    width: 100px;
+}
+
+
+.dash-splash {
+    margin: 0 auto 30px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width:90%;
+}
+
+.pro-explain{
+    margin: 30px 10px;
+}
+
+.new-project {
+    margin: 50px auto;
+    padding:30px;
+}
+
+.projects {
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    height:600px;
+    overflow: auto;
+    background:white;
+}
+
+.pro-cont {
+    margin: 10px;
+    box-shadow: 1px 6px 10px -2px rgba(0,0,0,0.2);
+}

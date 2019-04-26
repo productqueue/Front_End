@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Button} from '../../styles';
 import {connect} from 'react-redux';
 import {} from "../../actions";
 import Projects from './Projects';
@@ -74,23 +73,19 @@ class DashBoard extends Component {
     render() {
         
         return(
-            <div>
+            <div className="dashboard">
+              <div className="dash-splash">
                 <h1>DashBoard</h1>
-                <p>welcome {this.state.first_name}</p>
+                <p>welcome to Product Queue. this is </p>
                 <div>
-                    <Button onClick={this.toggleProjects.bind(this)}>Projects</Button>
-                    <Button onClick={this.toggleAccount.bind(this)}>Settings</Button>
-                    {!this.state.togglePro && <Projects/>}
-                    {!this.state.toggleAcc && 
-                    <AccountInfo 
-                      user={this.props.user} 
-                      disabled={this.state.disabled}
-                      editHandler={this.editHandler}
-                      changeHandler={this.changeHandler}
-                      updateUser={this.updateUser}
-                    />}
-                    
+                  <button className="ui red button" onClick={this.toggleProjects.bind(this)}>Projects</button>
+                  <button className="ui red button" onClick={this.toggleAccount.bind(this)}>Settings</button>
                 </div>
+              </div>      
+              <div className="container">
+                {!this.state.togglePro && <Projects/>}
+                {!this.state.toggleAcc && <AccountInfo/>}
+              </div>
             </div>
         )
         

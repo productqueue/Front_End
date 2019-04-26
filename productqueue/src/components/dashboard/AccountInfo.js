@@ -8,7 +8,7 @@ class AccountInfo extends Component {
         super(props)
         this.state = {
           disabled: true,
-          user: {}
+          user: {},
         }
       }
     
@@ -19,18 +19,17 @@ class AccountInfo extends Component {
       }
 
       updateUser = e => {
-        console.log("updateUser has fired", e)
         const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem('data'));
         const newInfo = this.state.user;
         e.preventDefault()
-        this.props.updateUserInfo(newInfo, token)
+        this.props.updateUserInfo(newInfo, token, user)
         this.setState({
           disabled: true
         })
       }
 
       changeHandler = e => {
-        console.log("changeHandler has fired", e)
         this.setState({
           user: {
             ...this.state.user,
@@ -54,58 +53,65 @@ class AccountInfo extends Component {
 
 render(){
     return(
-        <div>
+        <div className="ui placeholder segment">
             <h2>Account Info</h2>
-            <fieldset disabled={this.state.disabled}>
-            <form onSubmit={this.updateUser}>
-                <p onClick={() => this.editHandler()}>
-                {this.state.disabled ? 'EDIT' : 'CANCEL'}
-                </p>
-
+            <form className="ui form" onSubmit={this.updateUser}>
+              <div className="field">
                 <label htmlFor="first_name">First Name</label>
-                <input
-                type="text"
-                id="first_name"
-                name="first_name"
-                onChange={this.changeHandler}
-                defaultValue={this.state.user.first_name}
-                disabled={this.state.disabled}
-                />
-
+                <div className="ui left icon input">
+                  <input
+                  type="text"
+                  id="first_name"
+                  name="first_name"
+                  onChange={this.changeHandler}
+                  defaultValue={this.state.user.first_name}
+                  />
+                  <i aria-hidden="true" className="user icon" />
+                </div>
+              </div>
+              <div className="field">
                 <label htmlFor="last_name">Last Name</label>
-                <input
-                type="text"
-                id="last_name"
-                name="last_name"
-                onChange={this.changeHandler}
-                defaultValue={this.state.user.last_name}
-                disabled={this.state.disabled}
-                />
-
+                <div className="ui left icon input">
+                  <input
+                  type="text"
+                  id="last_name"
+                  name="last_name"
+                  onChange={this.changeHandler}
+                  defaultValue={this.state.user.last_name}
+                  />
+                  <i aria-hidden="true" className="user icon" />
+                </div>
+              </div>
+              <div className="field">
                 <label htmlFor="email">Contact Email</label>
-                <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="ex. example@example.com"
-                onChange={this.changeHandler}
-                defaultValue={this.state.user.email}
-                disabled={this.state.disabled}
-                aria-label="email"
-                />
-
+                <div className="ui left icon input">
+                  <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="ex. example@example.com"
+                  onChange={this.changeHandler}
+                  defaultValue={this.state.user.email}
+                  aria-label="email"
+                  />
+                  <i aria-hidden="true" className="user icon" />
+                </div>
+              </div>
+              <div className="field">
                 <label htmlFor="company">Company</label>
-                <input
-                type="text"
-                id="company"
-                name="company"
-                onChange={this.changeHandler}
-                defaultValue={this.state.user.company}
-                disabled={this.state.disabled}
-                />
-                {this.disabled ? null : <button type="submit">Submit</button>}
-            </form>
-            </fieldset>
+                <div className="ui left icon input">
+                  <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  onChange={this.changeHandler}
+                  defaultValue={this.state.user.company}
+                  />
+                  <i aria-hidden="true" className="user icon" />
+                </div>
+              </div>
+            <button className="ui red button" type="submit">Submit</button>
+          </form>
         </div>
     )
 }

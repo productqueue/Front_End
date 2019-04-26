@@ -4,9 +4,6 @@ import PrivateRoute from './components/auth/PrivateRoute';
 import { connect } from "react-redux";
 import { readInfo } from './actions'
 
-//Styles
-// import { GlobalStyle } from './styles/global';
-import {AppComp} from './styles';
 // components
 import Header from './components/dashboard/Header';
 
@@ -19,7 +16,7 @@ import Setup from './components/onboarding/Setup';
 import ProjectForm from './components/dashboard/ProjectForm';
 
 
-const Home = props => {
+const Home = () => {
   return(
     <div>
       <h1>Welcome to Product Queue</h1>
@@ -74,18 +71,18 @@ componentWillUnmount() {
     return (
       <Router>
         {/* <GlobalStyle/> */}
-        <AppComp>
+        <div className='app'>
           <Header/>
           <>
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/" component={Home} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/new-user" component={Welcome} />
-            <Route exact path="/new-user/setup" component={Setup} />
-            <Route exact path="/edit-project/:id" component={ProjectForm}/>
+            <PrivateRoute exact path="/new-user" component={Welcome} />
+            <PrivateRoute exact path="/new-user/setup" component={Setup} />
+            <PrivateRoute exact path="/edit-project/:id" component={ProjectForm}/>
           </>
-        </AppComp>
+        </div>
       </Router>
       
     );
@@ -93,7 +90,6 @@ componentWillUnmount() {
 }
 
 const mapStateToProps = state => {
-  console.log("mapStateToProps App", state)
   return {
     userInfo: state
   };

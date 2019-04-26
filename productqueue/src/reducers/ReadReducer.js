@@ -14,7 +14,6 @@ export const readReducer = (state = initialState, action) => {
         readingInfo: true,
       };
     case actionTypes.READ_SUCCESS:
-    console.log('readReducer Payload',action.payload)
       return {
         ...state,
         info: action.payload,

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import { } from '../../actions/index.js';
-import { Button } from '../../styles';
 
 class SelectProjects extends Component {
   constructor(props){
@@ -14,7 +13,7 @@ class SelectProjects extends Component {
 render(){
     return(
         <div>
-            <Link exact to="/dashboard"><Button>Projects</Button></Link>
+            <Link exact to="/dashboard"><button>Projects</button></Link>
         </div>
         )
 }

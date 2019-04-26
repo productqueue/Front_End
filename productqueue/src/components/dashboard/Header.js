@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {HeaderComp, Nav} from '../../styles';
-import {logout} from '../../actions';
-import {connect} from 'react-redux';
+import { logout } from "../../actions";
+import { connect } from "react-redux";
 
 export class Header extends Component {
-state = {
+  state = {
     user_id: null,
     loggedin: null
   };
-
 
   componentDidMount() {
     this.getUserID();
@@ -18,15 +16,15 @@ state = {
       "beforeunload",
       this.saveStateToLocalStorage.bind(this)
     );
-}
+  }
 
-componentWillUnmount() {
+  componentWillUnmount() {
     window.removeEventListener(
       "beforeunload",
       this.saveStateToLocalStorage.bind(this)
     );
     this.saveStateToLocalStorage();
-}
+  }
 
   hydrateStateWithLocalStorage() {
     for (let key in this.state) {
@@ -48,70 +46,76 @@ componentWillUnmount() {
     }
   }
 
-  
   getUserID = () => {
-  const user_id = localStorage.getItem("user_id");
-  if(user_id === null){
-    this.setState({ ...this.state, user_id: user_id })
-  }
-  return user_id;
+    const user_id = localStorage.getItem("user_id");
+    if (user_id === null) {
+      this.setState({ ...this.state, user_id: user_id });
+    }
+    return user_id;
   };
 
   Logout = e => {
-    e.preventDefault()
-    this.props.logout()
-  }
+    e.preventDefault();
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("data");
+    this.props.logout();
+  };
 
-  render(){
-      const id = this.props.user_id;
-      // console.log("user_id is being passed to header", id)
-          return (
-            <HeaderComp>
-            {!id ? (
-              <>
-                <Link to={`/`}>
-                  <h2>Product Queue</h2>
+  render() {
+    const id = this.props.user_id;
+    return (
+      <div className="header">
+        {!id ? (
+          <div className="header-bar container">
+            <img className="header-img" src="../../assets/Lambda_Logo.png" alt="logo"></img>
+            <Link to={`/`}>
+              <h2>Product Queue</h2>
+            </Link>
+            <div className="nav">
+              <Link to={`/register`}>
+                <button className="ui red button">Register</button>
+              </Link>
+              <Link to={`/login`}>
+                <button className="ui red button">Login</button>
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <>
+          <div className="header-bar container">
+            <Link to={`/`}>
+              <h2>Product Queue</h2>
+            </Link>
+              <div className="nav">
+                <Link to="/dashboard">
+                  <button className="ui red button">Dashboard</button>
                 </Link>
-                <Nav>
-                  <Link to={`/register`}>
-                  <p>Register</p>
-                  </Link>
-                  <Link to={`/login`}>
-                    <p>Login</p>
-                  </Link>
-                </Nav>
-              </>
-              ) : (
-              <>
-                <Link to={`/`}>
-                  <h2>Product Queue</h2>
+                <Link to={`/settings`}>
+                  <button className="ui red button">Settings</button>
                 </Link>
-                <Nav>
-                  <Link to="/dashboard">
-                  <p>Dashboard</p>
-                  </Link>
-                  <Link to={`/settings`}>
-                    <p>Settings</p>
-                  </Link>
-                  <Link to={`/login`}>
-                    <p onClick={this.Logout}>Logout</p>
-                  </Link>
-                </Nav>
-              </>
-              )}
-              </HeaderComp>
-          );
-      }
-      
+                <Link to={`/login`}>
+                  <button className="ui red button" onClick={this.Logout}>
+                    Logout
+                  </button>
+                </Link>
+              </div>
+              
+            </div>
+          </>
+        )}
+      </div>
+    );
   }
+}
 
-  const mapStateToProps = state => {
-    return{
-      user_id: state.authReducer.user.id
-    }
-  }
-  
+const mapStateToProps = state => {
+  return {
+    user_id: state.authReducer.user.id
+  };
+};
+
 export default connect(
   mapStateToProps,
-  {logout}
+  { logout }
 )(Header);

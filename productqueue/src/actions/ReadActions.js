@@ -8,13 +8,11 @@ export const READ_FAILURE = "READ_FAILURE";
 // Read info
 export const readInfo = token => dispatch => {
   dispatch({ type: READ_START });
-  console.log("my token", token);
   return axios
     .get(`${URL}/api/projects`, {
       headers: { Authorization: token, "Content-Type": "application/json" }
     })
     .then(res => {
-      console.log("readInfo Action", res);
       // localStorage.setItem("data", res.data);
       dispatch({ type: READ_SUCCESS, payload: res.data });
     })
@@ -31,7 +29,6 @@ export const readUserInfo = (data, token) => dispatch => {
       headers: { Authorization: token, "Content-Type": "application/json" }
     })
     .then(res => {
-      console.log("redInfo Action", res);
       localStorage.setItem("data", JSON.stringify(res.data));
       dispatch({ type: READ_SUCCESS, payload: res.data });
     })

@@ -11,11 +11,10 @@ export const CREATE_FAILURE = "CREATE_FAILURE";
 export const createInfo = (newInfo, data, token) => dispatch => {
     dispatch({ type: CREATE_START });
     return axios
-      .post(`${URL}/api/projects/${data}`, newInfo, {
+      .post(`${URL}/api/projects/${data.id}`, JSON.stringify(newInfo), {
         headers: { Authorization: token, "Content-Type": "application/json" }
       })
       .then(res => {
-        localStorage.setItem("data", JSON.stringify(res.data))
         dispatch({ type: CREATE_SUCCESS, payload: res.data });
       })
       .catch(err => {

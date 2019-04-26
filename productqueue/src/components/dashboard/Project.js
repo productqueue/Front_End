@@ -1,30 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import {ProjectCard, Button} from "../../styles";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Project = props => {
-  const data = JSON.parse(localStorage.getItem('data'))
-  console.log('PPPPPPPPPPPPPPPPPPPP',props)
+  const data = JSON.parse(localStorage.getItem("data"));
   return (
-    <ProjectCard>
-      
-      <div>
-        <h4>{props.project.name}</h4>
-        <h4>
-            {props.project.first_name}
-            {props.project.last_name},
-            {props.project.company}
-        </h4>
-        <p>{props.project.description}</p>
-        <h4>
-          Status:{' '}
-          <span className={props.project.status}> {props.project.status}</span>
-        </h4>
+    <div className="pro-cont">
+      <div className="ui card">
+        <div className="content">
+          <div className="header">{props.project.name}</div>
+          <div className="meta">{`${props.project.first_name} ${
+            props.project.last_name
+          }, ${props.project.company}`}</div>
+          <div className="discription">{props.project.description}</div>
+          <div className="extra content">
+            <div className="meta">
+              Status:{" "}
+              <span className={props.project.status}>
+                {" "}
+                {props.project.status}
+              </span>
+            </div>
+            <Link
+              to={{
+                pathname: `/edit-project/${
+                  data.role === "admin"
+                    ? props.project.id
+                    : props.project.user_id
+                }`,
+                state: { project: props.project }
+              }}
+            >
+              <button className="ui red button">Edit</button>
+            </Link>
+          </div>
+        </div>
       </div>
-      
-      <Link to={{ pathname: `/edit-project/${ data.role === 'admin' ? props.project.id : props.project.user_id }`,
-        state: { project: props.project }}}><Button>Edit</Button></Link>
-    </ProjectCard>
+    </div>
   );
 };
 
