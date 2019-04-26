@@ -94,7 +94,7 @@ render(){
                   defaultValue={this.state.user.email}
                   aria-label="email"
                   />
-                  <i aria-hidden="true" className="user icon" />
+                  <i aria-hidden="true" className="address card icon" />
                 </div>
               </div>
               <div className="field">
@@ -107,7 +107,7 @@ render(){
                   onChange={this.changeHandler}
                   defaultValue={this.state.user.company}
                   />
-                  <i aria-hidden="true" className="user icon" />
+                  <i aria-hidden="true" className="building icon" />
                 </div>
               </div>
             <button className="ui red button" type="submit">Submit</button>
