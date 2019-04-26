@@ -8,21 +8,21 @@ class NewProject extends Component {
         this.state = {
           disabled: false,
           project: {
-            project_name: '',
+            name: '',
             description: ''
           }
         }
       }
 
-      componentDidMount(){
-          this.setState({project: this.props.project})
-      }
+      // componentDidMount(){
+      //     this.setState({project: this.props.project})
+      // }
 
       createProject = e => {
         const token = localStorage.getItem("token");
-        const data = localStorage.getItem('data')
+        const data = JSON.parse(localStorage.getItem('data'))
         const newInfo = this.state.project;
-        console.log("NEEEEEEEEEEEEEEEEEEEEEEW", newInfo)
+        // console.log("NEEEEEEEEEEEEEEEEEEEEEEW", newInfo)
         e.preventDefault()
         this.props.createInfo(newInfo, data, token)
         this.setState({
@@ -54,36 +54,40 @@ class NewProject extends Component {
 
 render(){
     return(
-        <div>
+        <>
             <h3>Create New Project</h3>
-            <fieldset disabled={this.state.disabled}>
-              <form onSubmit={this.createProject}>
-                  <p onClick={() => this.editHandler()}>
-                  {this.state.disabled ? 'EDIT' : 'CANCEL'}
-                  </p>
-                  <label htmlFor="project_name">Project Name: </label>
-                  <input
-                  id="project_name"
-                  type="text"
-                  name="project_name"
-                  onChange={this.changeHandler}
-                  defaultValue={this.state.project.project_name}
-                  disabled={this.disabled}
-                  />
-                  <label htmlFor="discription">Discription: </label>
-                  <input
-                  id="description"
-                  type="text"
-                  name="description"
-                  onChange={this.changeHandler}
-                  defaultValue={this.state.project.description}
-                  disabled={this.state.disabled}
-                  />
-                  {this.state.disabled ? null : <button type="submit">Submit</button>}
-                  {/* {this.state.disabled ? null : <button onClick={this.deleteProject}>Delete</button>} */}
-              </form>
-              </fieldset>
-        </div>
+              <div className="ui placeholder segment">
+                <form className="ui form" onSubmit={this.createProject}>
+                    <div className="field">
+                      <label htmlFor="name">Project Name: </label>
+                      <div className="ui left icon input">
+                        <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        onChange={this.changeHandler}
+                        disabled={this.disabled}
+                        />
+                        <i aria-hidden="true" className="user icon" />
+                      </div>
+                    </div>
+                    <div className="field">
+                      <label htmlFor="description">Description: </label>
+                      <div className="ui left icon input">
+                        <input
+                        id="description"
+                        type="text"
+                        name="description"
+                        onChange={this.changeHandler}
+                        disabled={this.state.disabled}
+                        />
+                        <i aria-hidden="true" className="user icon" />
+                      </div>
+                    </div>
+                    <button className="ui red button" type="submit">Submit</button>
+                </form>
+              </div>
+        </>
     )
 }
 }

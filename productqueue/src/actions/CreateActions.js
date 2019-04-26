@@ -10,10 +10,8 @@ export const CREATE_FAILURE = "CREATE_FAILURE";
 // Create Info
 export const createInfo = (newInfo, data, token) => dispatch => {
     dispatch({ type: CREATE_START });
-    console.log("CREATE DATA",data)
-    console.log("CREATE TOKEN",token)
     return axios
-      .post(`${URL}/api/projects/${data.id}`, newInfo, {
+      .post(`${URL}/api/projects/${data.id}`, JSON.stringify(newInfo), {
         headers: { Authorization: token, "Content-Type": "application/json" }
       })
       .then(res => {

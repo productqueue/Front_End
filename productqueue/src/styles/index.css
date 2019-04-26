@@ -1,0 +1,45 @@
+
+.header-bar{
+    display: flex;
+    justify-content: space-between;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    padding: 10px;
+}
+
+.dashboard {
+    margin: 30px auto;
+    width:95%;
+}
+
+.dash-splash {
+    margin: 0 auto 30px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width:90%;
+}
+
+.pro-explain{
+    margin: 30px 10px;
+}
+
+.new-project {
+    margin: 50px auto;
+    padding:30px;
+}
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    height:600px;
+    overflow: auto;
+}
+
+.pro-cont {
+    margin: 10px;
+    
+}

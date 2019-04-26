@@ -41,26 +41,22 @@ class Projects extends Component {
   render() {
     return (
       <div>
-        <p>
-          Let's get started {this.props.user.first_name} these are your projects
-        </p>
-        <h2>Projects</h2>
-        <button onClick={this.toggleProjects.bind(this)}>New Project</button>
-        {!this.state.togglePro && <NewProject/>}
-        {/* <form onSubmit={this.search}>
-          <input
-            id="search"
-            type="text"
-            name="search"
-            placeholder="Search projects..."
-            value={this.state.projects}
-            onChange={this.handleChange}
-          />
-          <button>Search</button>
-        </form> */}
-        {this.state.projects.map((project, id) => {
+        <div className="pro-explain">
+          <h2>Projects</h2>
+          <p>
+            Let's get started {this.props.user.first_name} these are your projects
+          </p>
+        </div>
+        <div className="projects">
+          {this.state.projects.map((project, id) => {
           return <Project project={project} key={id} />;
         })}
+        </div>
+        <div className="new-project">
+          <button className="ui red button" onClick={this.toggleProjects.bind(this)}>New Project</button>
+          {!this.state.togglePro && <NewProject/>}
+        </div>
+        
       </div>
     );
   }

@@ -4,9 +4,6 @@ import PrivateRoute from './components/auth/PrivateRoute';
 import { connect } from "react-redux";
 import { readInfo } from './actions'
 
-//Styles
-// import { GlobalStyle } from './styles/global';
-import {AppComp} from './styles';
 // components
 import Header from './components/dashboard/Header';
 
@@ -19,7 +16,7 @@ import Setup from './components/onboarding/Setup';
 import ProjectForm from './components/dashboard/ProjectForm';
 
 
-const Home = props => {
+const Home = () => {
   return(
     <div>
       <h1>Welcome to Product Queue</h1>
@@ -74,7 +71,7 @@ componentWillUnmount() {
     return (
       <Router>
         {/* <GlobalStyle/> */}
-        <AppComp>
+        <div>
           <Header/>
           <>
             <Route exact path="/register" component={Register}/>
@@ -85,7 +82,7 @@ componentWillUnmount() {
             <PrivateRoute exact path="/new-user/setup" component={Setup} />
             <PrivateRoute exact path="/edit-project/:id" component={ProjectForm}/>
           </>
-        </AppComp>
+        </div>
       </Router>
       
     );
